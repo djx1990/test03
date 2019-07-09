@@ -1,11 +1,6 @@
-
 <template>
- <div v-if="this.$route.matched.some(record => record.meta.layout === false)">
-    <router-view></router-view>
- </div>
- <div class="layout" v-else>
+  <div class="layout">
     <Sider :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}">
-    
       <Menu active-name="1-2" theme="dark" width="auto" :open-names="['1']">
         <Submenu :name="index" v-for="(menu, index) in menus">
           <template slot="title">
@@ -28,11 +23,11 @@
       <Content :style="{padding: '10px 16px 16px'}">
         <Breadcrumb :style="{margin: '16px 0'}" separator="-">
           <BreadcrumbItem to="/">Home</BreadcrumbItem>
-          <BreadcrumbItem to="/users">Users</BreadcrumbItem>
-          <BreadcrumbItem to="/posts">Layout</BreadcrumbItem>
+          <BreadcrumbItem to="/List">Components</BreadcrumbItem>
+          <BreadcrumbItem to="/index">Layout</BreadcrumbItem>
         </Breadcrumb>
         <Card>
-          <div>
+          <div style="height: 600px">
             <router-view></router-view>
           </div>
         </Card>
@@ -44,13 +39,12 @@
 import {
   Sider,
   Menu,
-  Submenu,
+  SubMenu,
   Icon,
   MenuItem,
   Layout,
   Header,
   Content,
-  Breadcrumb,
   BreadcrumbItem,
   Card
 } from "iview";
@@ -59,41 +53,41 @@ export default {
   components: {
     Sider,
     Menu,
-    Submenu,
+    SubMenu,
     Icon,
     MenuItem,
     Layout,
     Header,
     Content,
-    Breadcrumb,
     BreadcrumbItem,
     Card
   },
   data() {
     return {
       menus:[
-        { 
-          name: 'weizhang',
+        {
+          name: '文章',
           icon: 'ios-navigate',
-          chilren: [{ name: "wenzhangtable", icon: "ios-american-football", to: "/posts" }]
+            chilren: [
+            { name: "aaa1", icon: "ios-american-football", to: "/list1" }
+          ]
         },
         {
-          name: "users",
+          name: "bbb",
           icon: "ios-navigate",
-          chilren: [{ name: "users", icon: "ios-navigate", to: "/users" }]
+          chilren: [{ name: "bbbb1", icon: "ios-navigate", to: "/table" }]
         },
-        // {
-        //   name: "ccc",
-        //   icon: "ios-navigate",
-        //   chilren: [{ name: "ccc1", icon: "ios-navigate", to: "/list" }]
-        // },
-        // {
-        //   name: "ddd",
-        //   icon: "ios-navigate",
-        //   chilren: [{ name: "ddd1", icon: "ios-navigate", to: "/table1" }]
-        // }
+        {
+          name: "ccc",
+          icon: "ios-navigate",
+          chilren: [{ name: "ccc1", icon: "ios-navigate", to: "/list" }]
+        },
+        {
+          name: "ddd",
+          icon: "ios-navigate",
+          chilren: [{ name: "ddd1", icon: "ios-navigate", to: "/table1" }]
+        }
       ],
-      show: false
 }
   }
 }
@@ -101,8 +95,6 @@ export default {
 
 <style>
 .layout {
-  width:100%;
-  height:100%;
   border: 1px solid #d7dde4;
   background: #f5f7f9;
   position: relative;
