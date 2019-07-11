@@ -264,6 +264,7 @@ export default {
       this.$router.push(`userposts/${user_id}/posts`);
     }
   }
+    
 };
 </script>
 <style>
