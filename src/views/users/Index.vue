@@ -75,6 +75,10 @@ export default {
           sortable: true
         },
         {
+          title: '地址',
+          key: "city"
+        },
+        {
           title: "爱好",
           key: "favs"
         },
